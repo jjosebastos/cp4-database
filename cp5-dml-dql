@@ -1,0 +1,176 @@
+-- 1 Duas Inserções de dados em cada Tabela (Não utilize dados aleatórios, exemplo “AAA”, “teste123” e etc.);
+-- t_qf_cliente
+INSERT INTO T_QF_CLIENTE (id_cliente, nm_cliente, nr_cpf,dt_nascimento, sx_cliente, st_cliente)
+VALUES (1, 'JOSE BEZERRA BASTOS NETO', '093.094.095-11', TO_DATE('2000-08-10', 'YYYY-MM-DD'), 'MO','1');
+
+INSERT INTO T_QF_CLIENTE (id_cliente, nm_cliente, nr_cpf,dt_nascimento, sx_cliente, st_cliente)
+VALUES (2, 'NICOLAS DOBBECK', '010.023.345-12', TO_DATE('2000-08-10', 'YYYY-MM-DD'), 'MO','1'); 
+
+INSERT INTO T_QF_CLIENTE (id_cliente, nm_cliente, nr_cpf,dt_nascimento, sx_cliente, st_cliente)
+VALUES (3, 'FERNANDO HENRIQUE', '210.123.345-15', TO_DATE('2004-09-15', 'YYYY-MM-DD'), 'MO','1'); 
+
+INSERT INTO T_QF_CLIENTE (id_cliente, nm_cliente, nr_cpf,dt_nascimento, sx_cliente, st_cliente)
+VALUES (4, 'LUCAS PONTES', '113.003.3220-05', TO_DATE('1999-03-01', 'YYYY-MM-DD'), 'MO','0'); 
+
+-- t_qf_autentica 
+INSERT INTO T_QF_AUTENTICA (id_autentica, nm_login, vl_senha, id_cliente)
+VALUES (1, 'josebastos', '1234509', 1);
+
+INSERT INTO T_QF_AUTENTICA (id_autentica, nm_login, vl_senha, id_cliente)
+VALUES (2, 'nicolasdo', '42011209', 2);
+
+INSERT INTO T_QF_AUTENTICA (id_autentica, nm_login, vl_senha, id_cliente)
+VALUES (3, 'fernandoh', '2339390', 3);
+
+
+-- t_qf_endereco 
+INSERT INTO T_QF_ENDERECO (id_endereco, nr_cep, nm_logradouro, nr_logradouro, ds_complemento, nm_bairro, nm_cidade, sg_uf, pt_referencia, id_cliente)
+VALUES (1, '12345-678', 'Rua das Flores', 120, 'Apartamento 202', 'Centro', 'Fortaleza', 'CE', 'Próximo ao parque', 1);
+
+INSERT INTO T_QF_ENDERECO  (id_endereco, nr_cep, nm_logradouro, nr_logradouro, ds_complemento, nm_bairro, nm_cidade, sg_uf, pt_referencia, id_cliente)
+VALUES (2, '98765-432', 'Avenida Brasil', 1500, 'Bloco B, Sala 105', 'Jardins', 'São Paulo', 'SP', 'Em frente ao shopping', 2);
+
+
+-- t_qf_cupom
+INSERT INTO T_QF_CUPOM (id_cupom, cd_cupom, vl_desconto, dt_val_cupom)
+VALUES (1, 'DESCONTO10', 10.00, TO_DATE('2024-12-31', 'YYYY-MM-DD'));
+
+INSERT INTO T_QF_CUPOM (id_cupom, cd_cupom, vl_desconto, dt_val_cupom)
+VALUES (2, 'PROMO20', 20.00, TO_DATE('2024-11-30', 'YYYY-MM-DD'));
+
+-- t_qf_categoria
+
+INSERT INTO T_QF_CATEGORIA (id_categoria, ds_categoria)
+VALUES (1, 'Eletrônicos');
+
+INSERT INTO T_QF_CATEGORIA (id_categoria, ds_categoria)
+VALUES (2, 'Roupas');
+
+-- t_qf_marca
+INSERT INTO T_QF_MARCA (id_marca, ds_marca)
+VALUES (1, 'Samsung');
+
+INSERT INTO T_QF_MARCA (id_marca, ds_marca)
+VALUES (2, 'Nike');
+
+-- t_qf_produto
+INSERT INTO T_QF_PRODUTO (id_produto, ds_produto, vl_produto, vl_peso, ds_dimensoes, id_categoria, id_marca)
+VALUES (1, 'Smartphone Galaxy S21', 2999.99, 0.5, '15x7x0.8 cm', 1, 1);
+
+INSERT INTO T_QF_PRODUTO (id_produto, ds_produto, vl_produto, vl_peso, ds_dimensoes, id_categoria, id_marca)
+VALUES (2, 'Camiseta Esportiva Nike', 149.99, 0.2, '40x30 cm', 2, 2);
+
+-- t_qf_armazem
+INSERT INTO T_QF_ARMAZEM (id_armazem, ds_armazem, ds_local_armazem)
+VALUES (1, 'Armazém Central', 'Rua A, 123, Centro');
+
+INSERT INTO T_QF_ARMAZEM (id_armazem, ds_armazem, ds_local_armazem)
+VALUES (2, 'Armazém Secundário', 'Avenida B, 456, Subúrbio');
+
+-- t_qf_estoque
+INSERT INTO T_QF_ESTOQUE (id_estoque, vl_quantidade, id_armazem, id_produto)
+VALUES (1, 50, 1, 1);
+
+INSERT INTO T_QF_ESTOQUE (id_estoque, vl_quantidade, id_armazem, id_produto)
+VALUES (2, 30, 2, 2);
+
+-- t_qf_pedido
+INSERT INTO T_QF_PEDIDO (id_pedido, dt_hr_pedido, st_pedido, vl_total, vl_desconto, ds_obs_gerais, id_cliente, id_cupom)
+VALUES (1, TO_DATE('2024-10-10 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Concluído', 3000.00, 100.00, 'Pedido entregue com sucesso', 1, 1);
+
+INSERT INTO T_QF_PEDIDO (id_pedido, dt_hr_pedido, st_pedido, vl_total, vl_desconto, ds_obs_gerais, id_cliente, id_cupom)
+VALUES (2, TO_DATE('2024-10-11 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Aguardando pagamento', 200.00, 20.00, 'Aguardando confirmação', 2, 2);
+
+INSERT INTO T_QF_PEDIDO (id_pedido, dt_hr_pedido, st_pedido, vl_total, vl_desconto, ds_obs_gerais, id_cliente, id_cupom)
+VALUES (3, TO_DATE('2024-10-11 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Aguardando pagamento', 5000.00, 20.00, 'Aguardando confirmação', 1, 1);
+
+INSERT INTO T_QF_PEDIDO (id_pedido, dt_hr_pedido, st_pedido, vl_total, vl_desconto, ds_obs_gerais, id_cliente, id_cupom)
+VALUES (4, TO_DATE('2024-10-11 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Concluído', 5000.00, 20.00, 'Pedido entregue com sucesso', 1, 1);
+
+
+-- t_qf_item_pedido
+INSERT INTO T_QF_ITEM_PEDIDO (id_item, qt_produto, vl_subtotal, vl_desconto, id_pedido, id_produto)
+VALUES (1, 1, 2999.99, 100.00, 1, 1);
+
+INSERT INTO T_QF_ITEM_PEDIDO (id_item, qt_produto, vl_subtotal, vl_desconto, id_pedido, id_produto)
+VALUES (2, 2, 149.99, 20.00, 2, 2);
+
+-- t_qf_pagamento
+INSERT INTO T_QF_PAGAMENTO (id_pagamento, ds_forma_pagamento, vl_pagamento, dt_hr_pagamento, st_pagamento, id_pedido)
+VALUES (1, 'Cartão de Crédito', 2900.00, TO_DATE('2024-10-10 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Pago', 1);
+
+INSERT INTO T_QF_PAGAMENTO (id_pagamento, ds_forma_pagamento, vl_pagamento, dt_hr_pagamento, st_pagamento, id_pedido)
+VALUES (2, 'Boleto Bancário', 180.00, TO_DATE('2024-10-11 17:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Aguardando', 2);
+
+
+-- 2 Uma Remoção de dados em cada Tabela utilizando o WHERE;
+DELETE FROM T_QF_CLIENTE
+WHERE id_cliente = 4;
+
+-- 3 Uma Atualização Simples para a Tabela T_QF_ENDERECO utilizando o WHERE;
+UPDATE T_QF_ENDERECO
+SET ds_complemento = 'Apartamento 504'
+WHERE id_endereco = 1;
+
+SELECT * FROM T_QF_ENDERECO WHERE id_endereco = 1;
+
+-- 4 Uma Atualização Simples para a Tabela T_QF_MARCA utilizando o WHERE;
+UPDATE T_QF_MARCA
+SET ds_marca = 'Apple'
+WHERE id_marca = 1;
+
+-- 5 Uma Consulta Simples em cada Tabela;
+SELECT id_cliente, nm_cliente, nr_cpf, sx_cliente
+FROM T_QF_CLIENTE;
+
+SELECT id_autentica, id_cliente, nm_login
+FROM T_QF_AUTENTICA;
+
+SELECT id_endereco, id_cliente, nm_logradouro, nr_logradouro, nm_bairro
+FROM T_QF_ENDERECO;
+
+SELECT id_pedido, id_cliente, id_cupom, vl_total, st_pedido, ds_obs_gerais
+FROM T_QF_PEDIDO;
+
+SELECT id_pagamento, id_pedido,ds_forma_pagamento ,vl_pagamento, dt_hr_pagamento, st_pagamento
+FROM T_QF_PAGAMENTO;
+
+SELECT id_categoria, ds_categoria 
+FROM T_QF_CATEGORIA;
+
+SELECT id_marca, ds_marca
+FROM T_QF_MARCA;
+
+SELECT id_produto, id_categoria, id_marca, ds_produto, ds_dimensoes
+FROM T_QF_PRODUTO;
+
+UPDATE T_QF_PRODUTO 
+SET DS_PRODUTO = 'Iphone 13 PRO MAX'
+WHERE id_produto = 1;
+
+SELECT id_estoque, id_produto, id_armazem, vl_quantidade
+FROM T_QF_ESTOQUE;
+
+-- 5 Duas Consulta Simples utilizando o WHERE (tabela à escolha do grupo)
+SELECT id_pagamento, id_pedido, vl_pagamento, dt_hr_pagamento, st_pagamento
+FROM T_QF_PAGAMENTO 
+WHERE st_pagamento = 'Pago';
+
+SELECT id_pagamento, id_pedido, vl_pagamento, dt_hr_pagamento, st_pagamento
+FROM T_QF_PAGAMENTO
+WHERE dt_hr_pagamento = TO_DATE('2024-10-10 15:00:00','YYYY-MM-DD HH24:MI:SS');
+
+-- 6 Uma Consulta de agrupamento na Tabela da sua escolha;
+SELECT id_marca, AVG(vl_produto) AS preco_medio
+FROM T_QF_PRODUTO
+GROUP BY id_marca;
+
+SELECT id_cliente, SUM(vl_total) AS total_gasto
+FROM T_QF_PEDIDO
+GROUP BY id_cliente;
+
+-- 7 Uma Consulta de agrupamento com filtragem (having) na Tabela da sua escolha;
+SELECT id_cliente, SUM(vl_total) AS total_gasto
+FROM T_QF_PEDIDO
+    GROUP BY id_cliente
+    HAVING SUM(vl_total) > 1000;
